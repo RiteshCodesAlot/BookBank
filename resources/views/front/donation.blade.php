@@ -6,8 +6,7 @@
             <div class="py-lg-2">&nbsp;</div>
             <div class="col-lg-12">
                 @include('front.message')
-                <form action="" method="post" name="donationForm" id="donationForm">
-                    @csrf
+                <form action="" method="POST" name="donationForm" id="donationForm">
                     <div class="card border-0 shadow mb-4 ">
                     <div class="card-body card-form p-4">
                         <h1 class="fs-4 mb-1">Book Donation</h1>
@@ -88,8 +87,8 @@ $("#donationForm").submit(function(e){
         e.preventDefault();
 
         $.ajax({
-            url: '{{ route("account.donationProcess") }}',
-            type: 'POST',
+            url: '{{ route('account.donationProcess') }}',
+            method: 'POST',
             data: $("#registrationForm").serializeArray(),
             dataType: 'json',
             success: function(response){

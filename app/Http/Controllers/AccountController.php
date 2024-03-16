@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Center;
+use App\Models\Book;
 use App\Models\Donate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -119,6 +120,12 @@ class AccountController extends Controller
         return view('front.login');
     }
 
+    //To show Forgot Password page to user
+    public function forgotpassword()
+    {
+        return view('front.forgotpassword');
+    }
+
     //For the Authentication
     public function authenticate(Request $request)
     {
@@ -144,14 +151,99 @@ class AccountController extends Controller
     {
 
         //To get the id of user which is logged in
-        // $id = Auth::user('user_id')->id;
+        $id = Auth::user()->id;
 
-        // //To get the info of the user which is logged in
-        // // $user = User::where('id',$id)->first();
-        // // OR
-        // $user = User::find($id);
+        //To get the info of the user which is logged in
+        // $user = User::where('id',$id)->first();
+        // OR
+        $user = User::find($id);
+
+
+        $centers = Center::orderBy('center_name', 'ASC')->where('status',1)->get();
+
+        // $jobTypes = JobType::orderBy('name','ASC')->where('status',1)->get();
 
         // Passing user info in profile.blade so we can use it there
-        return view('front.centers');
+        return view('front.centers', [
+            'user' => $user,
+            'centers' => $centers,
+
+        ]);
+    }
+
+//     public function centers()
+// {
+//     // Check if the user is authenticated
+//     if (Auth::check()) {
+//         // Get the authenticated user
+//         $user = Auth::user();
+
+//         // Get the ID of the authenticated user
+//         $userId = $user->user_id;
+
+//         // Fetch the user information from the database
+//         $user = User::find($userId);
+
+//         // Passing user info to the view
+//         return view('front.centers', [
+//             'user' => $user
+//         ]);
+//     } else {
+//         // Handle the case where the user is not authenticated
+//         // For example, redirect to the login page
+//         return redirect()->route('account.login');
+//     }
+// }
+
+    //This function will show users 'All Books' page
+    public function allbooks()
+    {
+        $books = Book::with(['center', 'category'])->paginate(10);
+        $centers = Center::orderBy('center_name', 'ASC')->where('status',1)->get();
+
+
+        return view('front.allbooks', compact(['books', 'centers']));
+    }
+
+    //This function will show users 'Issue Books' page
+    public function issuebooks()
+    {
+        //the 'paginate(10);' will show 10 records on a single page
+        //To use any relation we have to use with() clause, below we used relation with('jobType') which is created in the job model
+        // $books = Book::with(['center', 'category'])->paginate(10);
+        // return view('front.issuebooks',[
+        //     'books' => $books,
+        // ]);
+
+        //$books = Book::with(['center', 'category'])->paginate(10);
+
+        return view('front.issuebooks');// compact('books'));
+        
+    }
+
+
+    //This function will show users 'Return Books' page
+    public function returnbooks()
+    {
+        return view('front.returnbooks');
+    }
+
+    //This function will show users 'Renew Books' page
+    public function renewbooks()
+    {
+        return view('front.renewbooks');
+    }
+
+    //This function will show users 'Refferal' page
+    public function referral()
+    {
+        return view('front.referral');
+    }
+
+    //This function will logout the user
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('account.login');
     }
 }

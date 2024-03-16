@@ -12,11 +12,11 @@ class Donate extends Model
         //Defining a relation job which we are creating will belong to a specific jobType() & jobCategory so we will use 'belongsTo' relation   
     
 
-        public function center() {
-            return $this->belongsTo(Center::class);
-        } 
+//         public function center() {
+//             return $this->belongsTo(Center::class);
+//         } 
     
-        public function category() {
-            return $this->belongsTo(Category::class);
-        }
+//         public function category() {
+//             return $this->belongsTo(Category::class);
+//         }
 }

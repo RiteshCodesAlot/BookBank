@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+@extends('front.layouts.app')
+
+@section('main');
+
+{{-- <!DOCTYPE html>
 <html class="no-js" lang="en_AU" />
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -34,7 +38,7 @@
 			</div>
 		</div>
 	</nav>
-</header>
+</header> --}}
 <section class="section-5 bg-2">
     <div class="container py-5">
         <div class="row">
@@ -46,50 +50,37 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                <div class="card border-0 shadow mb-4 p-3">
-                    <div class="s-body text-center mt-3">
-                        <img src="assets/images/avatar7.png" alt="avatar"  class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="mt-3 pb-0">User</h5>
-                        <p class="text-muted mb-1 fs-6">Name of the user</p>
-                        <div class="d-flex justify-content-center mb-2">
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Update Profile </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card account-nav border-0 shadow mb-4 mb-lg-0">
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush ">
-                            <li class="list-group-item d-flex justify-content-between p-3">
-                                <a href="account.html">All Books</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="post-job.html">Issue Book</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="my-jobs.html">Return Book</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="job-applied.html">Renew Book</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="saved-jobs.html">Referral</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="saved-jobs.html">Damage</a>
-                            </li> 
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <a href="saved-jobs.html">Logout</a>
-                            </li>                                                       
-                        </ul>
-                    </div>
-                </div>
+                @include('front.sidebar') 
             </div>
             
                 <div class="col-md-8 col-lg-9 ">
                     <div class="job_listing_area">                    
                         <div class="job_lists">
-                        <div class="row">
-                            <div class="col-md-4">
+                            <div class="row">
+
+                                @foreach($centers as $center)
+                                    <div class="col-md-4">
+                                        <div class="card border-0 p-3 shadow mb-4">
+                                            <div class="card-body">
+                                                <div class="bg-light p-3 border">
+                                                    <h3 class="border-0 fs-5 pb-2 mb-0">{{ $center->center_name }}</h3>
+                                                    <p>Address: {{ $center->center_address }}</p>
+                                                </div>
+                                                {{-- <div class="d-grid mt-3">
+                                                    <!-- You can add a link to view center details if needed -->
+                                                    <a href="" class="btn btn-primary btn-lg">Select Center</a>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            {{-- <div class="col-md-4">
                                 <div class="card border-0 p-3 shadow mb-4">
                                     <div class="card-body">
                                         <div class="bg-light p-3 border">
@@ -139,7 +130,7 @@
                                     </div>
                                 </div>
 
-                                     <div class="row">
+                                    <div class="row">
                                     <div class="col-md-4">
                                         <div class="card border-0 p-3 shadow mb-4">
                                             <div class="card-body">
@@ -173,17 +164,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
-                                    
-                                
-                            
-                               
-                            
-                            
 
-                
+                                    </div>        --}}
 </section>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -205,9 +189,9 @@
       </div>
     </div>
   </div>
-</div>
-
-<footer class="bg-dark py-3 bg-2">
+</div> --}}
+@endsection
+{{-- <footer class="bg-dark py-3 bg-2">
 <div class="container">
     <p class="text-center text-white pt-3 fw-bold fs-6">©2024 bookbank ,all right reserved</p>
 </div>
@@ -220,4 +204,4 @@
 <script src="assets/js/lightbox.min.js"></script>
 <script src="assets/js/custom.js"></script>
 </body>
-</html>
+</html> --}}

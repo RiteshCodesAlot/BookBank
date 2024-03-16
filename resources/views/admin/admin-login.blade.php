@@ -20,41 +20,31 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
-                    <h1 class="h3">User Login</h1>
-                    <form action="{{ route('account.authenticate') }}" method="post">
+                    <h1 class="h3">Admin Login</h1>
+                    <form action="{{ route('account.authenticateAdmin') }}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="mb-2">Email*</label>
-                            <input type="text" value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="example@example.com">
+                            <input type="text" value="{{ old('admin_email') }}" name="admin_email" id="admin_email" class="form-control @error('admin_email') is-invalid @enderror" placeholder="example@example.com">
 
-                            @error('email')
+                            @error('admin_email')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror
 
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Password*</label>
-                            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter Password">
+                            <input type="admin_password" name="admin_password" id="admin_password" class="form-control @error('admin_password') is-invalid @enderror" placeholder="Enter Password">
 
-                            @error('password')
+                            @error('admin_password')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror
                         </div> 
                         <div class="justify-content-between d-flex">
                         <button class="btn btn-primary mt-2">Login</button>
-                            <a href="{{ route('account.forgotpassword') }}" class="mt-3">Forgot Password?</a>
-                        </div>
-                        <div class="mt-4 text-center">
-                        <p>Do not have an account? <a  href="{{ route('account.registration') }}">Register</a></p>
                         </div>
                     </form>                    
                 </div>
-                <form>
-                <div class="mt-4 text-center">
-                    <p>Click Here For Admin LogIn</p>
-                    <a class="btn btn-primary mt-2" href="{{ route('admin.adminlogin') }}" type="submit">Admin Login</a>
-                </div>
-                </form>
             </div>
         </div>
         <div class="py-lg-5">&nbsp;</div>
