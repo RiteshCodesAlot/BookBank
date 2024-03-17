@@ -61,47 +61,6 @@
                                 <button type="submit" class="btn btn-primary mx-3">Submit</button>
                             </div>
                         </form>
-                            {{-- <h3 class="fs-4 mb-1 mt-5 border-top pt-5">Book Donation</h3>
-
-                            <div class="row">
-                                <div class="mb-4 col-md-6">
-                                    <label for="" class="mb-2">Book Name<span class="req">*</span></label>
-                                    <input type="text" placeholder="Enter Book Name" id="book_name" name="book_name"
-                                        class="form-control">
-                                </div>
-
-                                <div class="col-md-6  mb-4">
-                                    <label for="" class="mb-2">Category<span class="req">*</span></label>
-                                    <select name="category" id="category" class="form-control">
-                                        <option value="">Select a Category</option>
-                                        <option value="">Engineering</option>
-                                        <option value="">Accountant</option>
-                                        <option value="">Information Technology</option>
-                                        <option value="">Fashion designing</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="mb-4 col md-6">
-                                    <label for="" class="mb-2">Date</label>
-                                    <input type="date" placeholder="Select Date" id="Date" name="Date"
-                                        class="form-control">
-                                </div>
-                                <div class="col-md-6  mb-4">
-                                    <label for="" class="mb-2">Center<span class="req">*</span></label>
-                                    <select name="Center" id="Center" class="form-control">
-                                        <option value="">Select a Center</option>
-                                        <option value="">Kothrud</option>
-                                        <option value="">Narayan peth</option>
-                                        <option value="">Karwe nagar</option>
-                                        <option value="">Nigdi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="card-footer  p-4">
-                                <button class="btn btn-primary">Donate</button>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

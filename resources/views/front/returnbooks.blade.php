@@ -35,22 +35,41 @@
                             <table class="table ">
                                 <thead class="bg-light">
                                     <tr>
+                                        <th scope="col">S.No</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Author</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Center</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th> <!-- New column for action -->
+
                                     </tr>
                                 </thead>
                                 <tbody class="border-0">
-                                    
+                                    @if ($books->isNotEmpty())
+                                    @foreach ($books as $book)
+                                        <tr>
+                                            <td>{{ $book->id }}</td>
+                                            <td>{{ $book->book_name }}</td>
+                                            <td>{{ $book->book_author }}</td>
+                                            <td>{{ $book->center->center_name }}</td>
+                                            <td>{{ $book->category->category_name }}</td>                                            
+                                            <td style="color: {{ $book->status == 1 ? 'green' : 'red' }}">
+                                                {{ $book->status == 1 ? 'Available' : 'Not Available' }}
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Return</button> <!-- Issue button -->
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @endif
                                 </tbody>
                                 
                             </table>
                         </div>
                         <div>
-                            {{-- for paginate(10); --}}
-                            {{-- {{ $jobs->links() }} --}}
+                            {{-- //for paginate(10);  --}}
+                            {{ $books->links() }}
                         </div>
                     </div>
                 </div>

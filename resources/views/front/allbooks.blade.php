@@ -35,6 +35,7 @@
                             <table class="table ">
                                 <thead class="bg-light">
                                     <tr>
+                                        <th scope="col">S.No</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Author</th>
                                         <th scope="col">Category</th>
@@ -46,11 +47,14 @@
                                     @if ($books->isNotEmpty())
                                     @foreach ($books as $book)
                                         <tr>
+                                            <td>{{ $book->id }}</td>
                                             <td>{{ $book->book_name }}</td>
                                             <td>{{ $book->book_author }}</td>
-                                            <td>{{ $book->category->name }}</td>
-                                            <td>{{ $book->center->name }}</td>
-                                            <td>{{ $book->status == 1 ? 'Available' : 'Not Available' }}</td>
+                                            <td>{{ $book->center->center_name }}</td>
+                                            <td>{{ $book->category->category_name }}</td>                                            
+                                            <td style="color: {{ $book->status == 1 ? 'green' : 'red' }}">
+                                                {{ $book->status == 1 ? 'Available' : 'Not Available' }}
+                                            </td>
                                         </tr>
                                     @endforeach
                                     @endif
@@ -59,8 +63,8 @@
                             </table>
                         </div>
                         <div>
-                            {{-- for paginate(10); --}}
-                            {{-- {{ $jobs->links() }} --}}
+                            {{-- //for paginate(10);  --}}
+                            {{ $books->links() }}
                         </div>
                     </div>
                 </div>

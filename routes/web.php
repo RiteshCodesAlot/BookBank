@@ -42,3 +42,4 @@ Route::get('/isuuebooks',[AccountController::class,'issuebooks'])->name('account
 Route::get('/returnbooks',[AccountController::class,'returnbooks'])->name('account.returnbooks');
 Route::get('/renewbooks',[AccountController::class,'renewbooks'])->name('account.renewbooks');
 Route::get('/referral',[AccountController::class,'referral'])->name('account.referral');
+Route::get('/damage',[AccountController::class,'damage'])->name('account.damage');

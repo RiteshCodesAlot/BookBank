@@ -171,73 +171,45 @@ class AccountController extends Controller
         ]);
     }
 
-//     public function centers()
-// {
-//     // Check if the user is authenticated
-//     if (Auth::check()) {
-//         // Get the authenticated user
-//         $user = Auth::user();
-
-//         // Get the ID of the authenticated user
-//         $userId = $user->user_id;
-
-//         // Fetch the user information from the database
-//         $user = User::find($userId);
-
-//         // Passing user info to the view
-//         return view('front.centers', [
-//             'user' => $user
-//         ]);
-//     } else {
-//         // Handle the case where the user is not authenticated
-//         // For example, redirect to the login page
-//         return redirect()->route('account.login');
-//     }
-// }
-
     //This function will show users 'All Books' page
     public function allbooks()
     {
-        $books = Book::with(['center', 'category'])->paginate(10);
-        $centers = Center::orderBy('center_name', 'ASC')->where('status',1)->get();
-
-
-        return view('front.allbooks', compact(['books', 'centers']));
+        $books = Book::paginate(10); // Fetch 10 books per page
+        return view('front.allbooks', compact('books'));
     }
 
     //This function will show users 'Issue Books' page
     public function issuebooks()
     {
-        //the 'paginate(10);' will show 10 records on a single page
-        //To use any relation we have to use with() clause, below we used relation with('jobType') which is created in the job model
-        // $books = Book::with(['center', 'category'])->paginate(10);
-        // return view('front.issuebooks',[
-        //     'books' => $books,
-        // ]);
-
-        //$books = Book::with(['center', 'category'])->paginate(10);
-
-        return view('front.issuebooks');// compact('books'));
-        
+        $books = Book::paginate(10); // Fetch 10 books per page
+        return view('front.issuebooks', compact('books'));
     }
 
 
     //This function will show users 'Return Books' page
     public function returnbooks()
     {
-        return view('front.returnbooks');
+        $books = Book::paginate(10); // Fetch 10 books per page
+        return view('front.returnbooks', compact('books'));
     }
 
     //This function will show users 'Renew Books' page
     public function renewbooks()
     {
-        return view('front.renewbooks');
+        $books = Book::paginate(10); // Fetch 10 books per page
+        return view('front.renewbooks', compact('books'));
     }
 
     //This function will show users 'Refferal' page
     public function referral()
     {
         return view('front.referral');
+    }
+
+    //This function will show users 'Damage' page
+    public function damage()
+    {
+        return view('front.damage');
     }
 
     //This function will logout the user

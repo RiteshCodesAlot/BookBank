@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Center;
+use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -61,6 +65,11 @@ public function authenticateAdmin(Request $request)
 
     public function dashboard()
     {
-        return view('admin.admin-dashboard');
+        return view('admin.admin-dashboard',[
+            'categories' => Category::count(),
+            'centers' => Center::count(),
+            'users' => User::count(),
+            'books' => book::count(),
+        ]);
     }
 }
