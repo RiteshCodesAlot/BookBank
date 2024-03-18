@@ -31,6 +31,11 @@ Route::get('/login',[AccountController::class,'login'])->name('account.login');
 Route::post('/admin-authenticate',[AdminController::class,'authenticateAdmin'])->name('account.authenticateAdmin');
 Route::get('/admin-login',[AdminController::class,'adminLogin'])->name('admin.adminlogin');
 Route::get('/admin-dashboard',[AdminController::class,'dashboard'])->name('admin.adminDashboard');
+Route::get('/manage-users',[AdminController::class,'showUser'])->name('admin.manageUsers');
+Route::post('/user/destroy/{user_id}', [AdminController::class, 'destroy'])->name('users.destroy');
+Route::get('/manage-centerss',[AdminController::class,'showCenters'])->name('admin.manageCenters');
+
+
 
 Route::get('/centers',[AccountController::class,'centers'])->name('account.centers');
 

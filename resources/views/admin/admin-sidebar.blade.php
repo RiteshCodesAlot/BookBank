@@ -12,10 +12,10 @@
     <div class="card-body p-0">
         <ul class="list-group list-group-flush ">
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="">Manage Users</a>
+                <a href="{{ route('admin.manageUsers') }}">Manage Users</a>
             </li>
             <li class="list-group-item d-flex justify-content-between p-3">
-                <a href="">Manage Centers</a>
+                <a href="{{ route('admin.manageCenters') }}">Manage Centers</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="">Manage Categories</a>

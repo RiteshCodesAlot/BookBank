@@ -62,7 +62,7 @@ public function authenticateAdmin(Request $request)
     }
 }
 
-
+    //This will show dashboard
     public function dashboard()
     {
         return view('admin.admin-dashboard',[
@@ -72,4 +72,30 @@ public function authenticateAdmin(Request $request)
             'books' => book::count(),
         ]);
     }
+
+    //This will show Manage User Page
+    public function showUser()
+    {
+
+        return view('admin.manageusers',[
+            'users' => User::Paginate(5)
+        ]);
+    }
+
+    public function destroy($user_id)
+    {
+        User::find($user_id)->delete();
+        return redirect()->route('admin.manageUsers');
+    }
+
+    //This will show Manage Centers Page
+    public function showCenters()
+    {
+
+        return view('admin.manageCenters',[
+            'centers' => Center::Paginate(5)
+        ]);
+    }
+
+    
 }
